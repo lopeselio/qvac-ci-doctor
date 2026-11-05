@@ -1,0 +1,31 @@
+# Copy to .github/workflows/ci-doctor.yml in your repository.
+# Whenever the workflow named "CI" fails, this reads its logs and posts what went wrong
+# on the pull request (one comment, updated in place on each failure).
+name: CI doctor
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+permissions:
+  actions: read        # read the failed run's logs
+  checks: read         # read annotations when logs have expired
+  contents: read       # use contents: write instead to comment on commits without a PR
+  pull-requests: write # comment on the pull request
+
+jobs:
+  diagnose:
+    if: github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lopeselio/qvac-ci-doctor@main
+        id: doctor
+        # with:
+        #   explain: 'true'   # add a local QVAC model's explanation (~1 GB download, cache ~/.qvac)
+
+      # Optional: rerun once when the failure looks flaky.
+      # - if: steps.doctor.outputs.verdict == 'flaky'
+      #   env:
+      #     GH_TOKEN: ${{ github.token }}
+      #   run: gh run rerun ${{ github.event.workflow_run.id }} --failed -R ${{ github.repository }}

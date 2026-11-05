@@ -1,0 +1,69 @@
+name: qvac-ci-doctor
+description: Find out why a CI run failed, separate flaky failures from real ones, and post the diagnosis on the pull request.
+author: lopeselio
+branding:
+  icon: activity
+  color: green
+
+inputs:
+  run-id:
+    description: The workflow run to diagnose. Defaults to the run that triggered this workflow (workflow_run).
+    required: false
+    default: ''
+  comment:
+    description: Post the diagnosis as a pull request comment (updated in place on reruns), or a commit comment when there is no PR.
+    required: false
+    default: 'true'
+  explain:
+    description: Add a plain-words explanation from a local Tether QVAC model. Downloads about 1 GB the first time; cache ~/.qvac to reuse it.
+    required: false
+    default: 'false'
+  token:
+    description: Token for reading runs and posting comments.
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  verdict:
+    description: passed, flaky, maybe-flaky, failure or unknown
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+
+    - name: Install the QVAC SDK
+      if: inputs.explain == 'true'
+      shell: bash
+      run: npm install --prefix "$GITHUB_ACTION_PATH" --no-save --no-audit --no-fund @qvac/sdk@^0.23.0
+
+    - name: Diagnose
+      id: doctor
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.token }}
+        RUN_ID: ${{ inputs.run-id || github.event.workflow_run.id }}
+        REPO: ${{ github.repository }}
+        COMMENT: ${{ inputs.comment }}
+        EXPLAIN: ${{ inputs.explain }}
+      run: |
+        if [ -z "$RUN_ID" ]; then
+          echo "::error::No run to diagnose: set run-id, or trigger this workflow with workflow_run."
+          exit 1
+        fi
+        args=(run "$RUN_ID" -R "$REPO")
+        [ "$COMMENT" = "true" ] && args+=(--comment)
+        [ "$EXPLAIN" = "true" ] && args+=(--explain)
+        set +e
+        node "$GITHUB_ACTION_PATH/bin/ci-doctor.js" "${args[@]}"
+        code=$?
+        set -e
+        case $code in
+          0) verdict=passed ;;
+          1) verdict=flaky ;;
+          2) verdict=failure ;;
+          *) verdict=unknown ;;
+        esac
+        echo "verdict=$verdict" >> "$GITHUB_OUTPUT"
