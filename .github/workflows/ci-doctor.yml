@@ -1,0 +1,19 @@
+# ci-doctor diagnosing its own CI: when CI fails, explain why on the pull request.
+name: CI doctor
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+permissions:
+  actions: read
+  checks: read
+  contents: read
+  pull-requests: write
+jobs:
+  diagnose:
+    if: github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      # Checks out the default branch (this action), never the pull request's code.
+      - uses: actions/checkout@v4
+      - uses: ./
