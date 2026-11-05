@@ -1,0 +1,11 @@
+> app@1.0.0 lint
+> eslint .
+
+/home/runner/work/app/app/src/server.js
+  12:7   error  'unused' is assigned a value but never used  no-unused-vars
+  40:1   warning  Unexpected console statement             no-console
+
+/home/runner/work/app/app/src/db.js
+  3:10  error  'connect' is defined but never used  no-unused-vars
+
+✖ 3 problems (2 errors, 1 warning)

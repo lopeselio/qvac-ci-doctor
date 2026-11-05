@@ -1,0 +1,1 @@
+{ "verdict": "failure", "root": "test-failed", "file": "test/basic.js", "mentions": ["closing a session closes its channel", "expected true, got false"] }

@@ -1,0 +1,1 @@
+{ "verdict": "failure", "root": "lint", "file": "src/server.js", "mentions": ["2 errors in 2 files", "no-unused-vars"] }

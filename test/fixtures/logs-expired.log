@@ -1,0 +1,2 @@
+Move (unit tests)	Install Aptos CLI	2000-01-01T00:00:00.0000000Z ##[group]Run Install Aptos CLI
+Move (unit tests)	UNKNOWN STEP	2000-01-01T00:00:00.0000000Z ##[error]Process completed with exit code 2.

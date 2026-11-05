@@ -1,0 +1,1 @@
+{ "verdict": "failure", "root": "test-failed", "file": "test/parse.test.js", "mentions": ["splits lines", "expected 3, got 2"] }

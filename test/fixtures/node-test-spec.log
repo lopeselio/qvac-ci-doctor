@@ -1,0 +1,12 @@
+▶ math
+  ✔ adds (0.6ms)
+  ✖ subtracts (1.1ms)
+    AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+    1 !== 2
+
+        at TestContext.<anonymous> (file:///Users/dev/app/test/math.test.js:9:10)
+✖ math (2.3ms)
+ℹ tests 2
+ℹ pass 1
+ℹ fail 1

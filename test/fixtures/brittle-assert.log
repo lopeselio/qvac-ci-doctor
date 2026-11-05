@@ -1,0 +1,23 @@
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm test
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm test
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z TAP version 13
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z 
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z # closing a session closes its channel
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z     ok 1 - should be equal
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z     not ok 2 - should be equal
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       ---
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       actual: false
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       expected: true
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       operator: is
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       source: |
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z           t.is(mux.isIdle(), true)
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z         ----^
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       stack: ./test/basic.js:833:5
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       ...
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z not ok 1 - closing a session closes its channel # time = 2908.6ms
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z 
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z 1..1
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z # tests = 0/1 pass
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z # not ok
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.

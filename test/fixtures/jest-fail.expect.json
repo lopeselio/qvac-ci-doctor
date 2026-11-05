@@ -1,0 +1,1 @@
+{ "verdict": "failure", "root": "test-failed", "file": "tests/integration/module.test.js", "mentions": ["nonce has already been used"] }

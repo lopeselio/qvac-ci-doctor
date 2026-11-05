@@ -1,0 +1,1 @@
+{ "verdict": "failure", "root": "npm-lockfile", "mentions": ["hyperswarm@4.17.2", "npm install"] }

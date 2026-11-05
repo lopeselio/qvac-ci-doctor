@@ -1,0 +1,9 @@
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm ci
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error code EUSAGE
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error Missing: hyperswarm@4.17.2 from lock file
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error Missing: b4a@1.6.7 from lock file
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.

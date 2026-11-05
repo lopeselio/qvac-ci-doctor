@@ -1,0 +1,12 @@
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm run test:integration
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z FAIL tests/chain.test.js
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z   ● chain › reads the balance
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z 
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z     connect ECONNREFUSED 127.0.0.1:8545
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z 
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       at Object.<anonymous> (tests/chain.test.js:18:5)
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z 
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z Tests:       1 failed, 3 passed, 4 total
+integration	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.

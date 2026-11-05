@@ -1,0 +1,1 @@
+{ "verdict": "failure", "root": "test-failed", "file": "/Users/dev/app/test/math.test.js", "mentions": ["subtracts", "1 !== 2"] }

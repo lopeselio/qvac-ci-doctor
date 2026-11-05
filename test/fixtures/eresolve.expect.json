@@ -1,0 +1,1 @@
+{ "verdict": "failure", "root": "npm-peer-conflict", "mentions": ["react@19.1.0"] }

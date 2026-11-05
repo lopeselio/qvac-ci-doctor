@@ -1,0 +1,16 @@
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm test
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z # suspend + resume - 2 peers
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z     # flushed
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z     ok 1 - connected
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z     # resumed
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z /home/runner/work/swarm/swarm/node_modules/brittle/index.js:330
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       this._onend(new Error('Test timed out after ' + ms + ' ms'))
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z                   ^
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z 
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z Error: Test timed out after 30000 ms
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z     at Timeout.ontimeout [as _onTimeout] (/home/runner/work/swarm/swarm/node_modules/brittle/index.js:330:19)
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z     at listOnTimeout (node:internal/timers:685:17)
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z 
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z Node.js v24.20.0
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.

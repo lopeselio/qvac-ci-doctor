@@ -1,0 +1,1 @@
+{ "verdict": "failure", "root": "format", "mentions": ["npx prettier --write test/purge.js"] }

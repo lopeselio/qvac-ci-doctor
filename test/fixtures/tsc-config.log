@@ -1,0 +1,5 @@
+typecheck	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm run typecheck
+typecheck	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+typecheck	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]tsconfig.json(10,5): error TS5102: Option 'baseUrl' has been removed. Please remove it from your configuration.
+typecheck	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]tsconfig.build.json(5,3): error TS5102: Option 'baseUrl' has been removed. Please remove it from your configuration.
+typecheck	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 2.

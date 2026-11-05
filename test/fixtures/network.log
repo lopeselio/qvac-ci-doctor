@@ -1,0 +1,6 @@
+build (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm ci
+build (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+build (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error code ECONNRESET
+build (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error network aborted
+build (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error network This is a problem related to network connectivity.
+build (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.

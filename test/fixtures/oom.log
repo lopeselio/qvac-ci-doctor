@@ -1,0 +1,6 @@
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm run build
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z <--- Last few GCs --->
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z  1: 0xb8a9c0 node::Abort() [node]
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 134.

@@ -1,0 +1,8 @@
+Lint	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm run lint
+Lint	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+Lint	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z > corestore@7.14.0 lint
+Lint	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z > prettier --check . && lunte
+Lint	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z Checking formatting...
+Lint	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [[33mwarn[39m] test/purge.js
+Lint	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [[33mwarn[39m] Code style issues found in the above file. Run Prettier with --write to fix.
+Lint	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.

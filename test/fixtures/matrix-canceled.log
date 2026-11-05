@@ -1,0 +1,16 @@
+test (macos-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm test
+test (macos-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+test (macos-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]The operation was canceled.
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm test
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z TAP version 13
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z # reads config
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z     not ok 1 - should be equal
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       ---
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       actual: "C:\\app"
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       expected: "/app"
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       operator: is
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       stack: ./test/config.js:20:3
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z       ...
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z not ok 1 - reads config # time = 3.2ms
+test (ubuntu-latest)	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.

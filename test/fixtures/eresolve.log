@@ -1,0 +1,10 @@
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm install
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error code ERESOLVE
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error ERESOLVE unable to resolve dependency tree
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error While resolving: app@1.0.0
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error Found: react@19.1.0
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error Could not resolve dependency:
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error peer react@"^18.0.0" from some-widget@2.3.0
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.

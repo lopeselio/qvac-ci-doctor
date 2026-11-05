@@ -1,0 +1,17 @@
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm run test:integration
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST] FAIL tests/integration/module.test.js (11.7 s)
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST]   wallet
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST]     ✓ should send a tx (803 ms)
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST]     ✕ should revoke the delegation (736 ms)
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST] 
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST]   ● wallet › should revoke the delegation
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST] 
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST]     nonce has already been used
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST] 
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST]       at makeError (node_modules/ethers/src.ts/utils/errors.ts:698:21)
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST]       at Object.<anonymous> (tests/integration/module.test.js:212:7)
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST] 
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST] Test Suites: 1 failed, 1 total
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z [TEST] Tests:       1 failed, 1 passed, 2 total
+Test / linux	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.

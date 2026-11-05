@@ -1,0 +1,24 @@
+TAP version 13
+# Subtest: parser
+    # Subtest: splits lines
+    not ok 1 - splits lines
+      ---
+      duration_ms: 1.2
+      location: '/home/runner/work/app/app/test/parse.test.js:14:3'
+      failureType: 'testCodeFailure'
+      error: 'Expected values to be strictly equal:'
+      code: 'ERR_ASSERTION'
+      expected: 3
+      actual: 2
+      operator: 'strictEqual'
+      ...
+    1..1
+not ok 1 - parser
+  ---
+  duration_ms: 3.1
+  location: '/home/runner/work/app/app/test/parse.test.js:5:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  ...
+# tests 1
+# fail 1

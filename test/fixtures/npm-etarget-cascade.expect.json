@@ -1,0 +1,1 @@
+{ "verdict": "failure", "root": "npm-version-missing", "mentions": ["@acme/registry-client@^0.8.0", "npm view @acme/registry-client versions"] }

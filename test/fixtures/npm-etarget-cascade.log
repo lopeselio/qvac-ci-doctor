@@ -1,0 +1,14 @@
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run npm run checks
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm run checks
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z > @acme/sdk@1.4.0 checks
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z > node ./scripts/link-workspace.mjs
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error code ETARGET
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error notarget No matching version found for @acme/registry-client@^0.8.0.
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error notarget In most cases you or one of your dependencies are requesting
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z npm error notarget a package version that doesn't exist.
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error][sdk] link workspace failed
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z src/client/api/cache.ts(53,7): error TS2353: Object literal may only specify known properties, and 'modelSrc' does not exist in type 'CacheOptions'.
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z src/index.ts(120,8): error TS2305: Module '"@acme/core"' has no exported member 'Token'.
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error][sdk] typecheck failed
+SDK checks	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.

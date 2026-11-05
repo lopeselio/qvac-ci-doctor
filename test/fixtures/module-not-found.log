@@ -1,0 +1,9 @@
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[group]Run node --test
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[endgroup]
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z node:internal/modules/esm/resolve:873
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z         ^
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z 
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'hyperdht' imported from /home/runner/work/app/app/test/swarm.test.js
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z     at packageResolve (node:internal/modules/esm/resolve:873:9)
+build	UNKNOWN STEP	2026-11-05T09:16:50.1000000Z ##[error]Process completed with exit code 1.
