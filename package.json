@@ -1,0 +1,59 @@
+{
+  "name": "qvac-ci-doctor",
+  "version": "0.1.0",
+  "description": "Find out why CI failed: reads GitHub Actions logs, finds the first real error, separates flaky failures from real ones and points at the evidence. Rules decide; a local Tether QVAC model can explain, but only from lines it can cite.",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "bin": {
+    "ci-doctor": "./bin/ci-doctor.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "action.yml",
+    "qvac.config.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "eval": "node bin/ci-doctor.js eval test/fixtures"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "ci",
+    "github-actions",
+    "developer-productivity",
+    "flaky-tests",
+    "logs",
+    "qvac",
+    "tether",
+    "local-ai"
+  ],
+  "author": "lopeselio",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/lopeselio/qvac-ci-doctor#readme",
+  "bugs": {
+    "url": "https://github.com/lopeselio/qvac-ci-doctor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lopeselio/qvac-ci-doctor.git"
+  },
+  "peerDependencies": {
+    "@qvac/sdk": ">=0.23.0"
+  },
+  "peerDependenciesMeta": {
+    "@qvac/sdk": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@qvac/sdk": "^0.23.0"
+  }
+}
