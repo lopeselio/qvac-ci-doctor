@@ -16,10 +16,11 @@ import { randomUUID } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { dirname, extname, join, resolve, sep } from 'node:path'
-import { diagnose, excerpt, exitCodeFor } from './diagnose.js'
+import { diagnose } from './diagnose.js'
 import { diagnoseRun } from './doctor.js'
 import { GitHub, parseRunRef } from './github.js'
-import { headline, renderJson, renderMarkdown } from './report.js'
+import { renderMarkdown } from './report.js'
+import { diagnosisView } from './view.js'
 import { explainWithLlm, loadExplainer } from './explain.js'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -82,22 +83,8 @@ export function createUiServer ({ loadSdk, github = (repo) => new GitHub({ repo 
     return id
   }
 
-  /** What the page shows: renderJson plus the evidence lines around each cause. */
   function view (id) {
-    const { run, diagnosis, context, repo: r } = results.get(id)
-    const json = renderJson(diagnosis, { run, context })
-    const evidence = diagnosis.causes.map((c) => excerpt(diagnosis.lines, c.finding).map((l) => ({ n: l.n, text: l.text, hit: (c.finding.lines ?? []).includes(l.n) })))
-    return {
-      id,
-      repo: r,
-      headline: headline(diagnosis.verdict).text,
-      exitCode: exitCodeFor(diagnosis.verdict),
-      ...json,
-      evidence,
-      pr: context?.pr ?? null,
-      sha: run?.headSha ?? null,
-      lineCount: diagnosis.lines.length
-    }
+    return diagnosisView(id, results.get(id))
   }
 
   function sdk () {
