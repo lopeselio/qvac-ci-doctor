@@ -9,6 +9,8 @@ export default defineConfig({
   base: '/',
   build: { outDir: 'dist', emptyOutDir: true, sourcemap: false },
   server: {
+    // The UI imports the shared engine (../src) and example logs (../test/fixtures).
+    fs: { allow: ['..'] },
     proxy: { '/api': { target: 'http://127.0.0.1:4500', changeOrigin: true } }
   }
 })
