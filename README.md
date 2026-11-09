@@ -1,6 +1,6 @@
 # qvac-ci-doctor
 
-**Find out why CI failed, without reading 86,000 lines of log.** ci-doctor reads a GitHub Actions run, finds the first real error, tells you whether it's a real failure or a flaky one worth a rerun, and points at the exact log lines. It can post that on the pull request as one comment that updates itself.
+**Find out why CI failed, without reading 86,000 lines of log.** Try it in your browser: **[ci-doctor.qvac.lopeselio.online](https://ci-doctor.qvac.lopeselio.online)** (paste a log; it's diagnosed in the page). ci-doctor reads a GitHub Actions run, finds the first real error, tells you whether it's a real failure or a flaky one worth a rerun, and points at the exact log lines. It can post that on the pull request as one comment that updates itself.
 
 Rules make the diagnosis. Optionally, a small local model running on [Tether QVAC](https://docs.qvac.tether.io/) explains it in plain words, but its answer is only shown if it passes checks: it must cite log lines it was actually shown, and it can't name files that aren't in the log or contradict the verdict.
 
@@ -112,6 +112,7 @@ ci-doctor run <run-id | run URL>     diagnose a GitHub Actions run
 ci-doctor latest [--branch b]        diagnose the latest failed run in this repository
 ci-doctor log <file | ->             diagnose any log file, or stdin
 ci-doctor eval <dir>                 score it against logs with known answers
+ci-doctor ui [--port 4500]           the web UI (see below)
 ```
 
 | Option | |
@@ -126,6 +127,32 @@ ci-doctor eval <dir>                 score it against logs with known answers
 | `--exit-zero` | Always exit 0 |
 
 **Exit codes:** `0` nothing failed · `1` worth a rerun (likely or possibly flaky) · `2` real failure · `3` failed, cause unclear. Scripts can use them, for example to rerun only flaky jobs.
+
+## Web UI
+
+```bash
+npm run build:ui && npm start      # or: ci-doctor ui [--port 4500] [-R owner/name] [--no-open]
+```
+
+`ci-doctor ui` opens a local page over the same engine as the CLI:
+
+- **Pick a run:** paste a run URL or ID, or click one of the **recent failures** in the repository. GitHub is read through your own `gh` login.
+- **Or paste or drop a log file**, with no GitHub needed.
+- **Read the result:** the verdict with its exit code, the root cause with the job and step, the **evidence lines** (the matching one highlighted), the fix, the context (PR, changed files, default branch) and what else failed afterwards.
+- **Explain with the local model:** Qwen3 1.7B on your computer, through Tether QVAC. Its answer streams in, and is shown only if it passes the same checks as the CLI's `--explain`.
+- **Share it:** copy or download the Markdown report, or **post it to the PR**. Posting needs a confirm click; nothing is posted otherwise.
+
+The server listens on 127.0.0.1 only, checks the Host header, serves a strict Content-Security-Policy and only accepts JSON or plain-text POSTs.
+
+| Recent failures in a repository | A diagnosis |
+|---|---|
+| ![CI Doctor's home: a run URL box, the repository, and the recent failed runs of lopeselio/qvac-pocket-tune](docs/ui-runs.png) | ![A real Expo build failure diagnosed: "Real failure: needs a fix", Metro can't resolve expo/internal/bundle-origin, imported by expo-asset, evidence line 272 highlighted](docs/ui-diagnosis.png) |
+
+**In your browser.** [ci-doctor.qvac.lopeselio.online](https://ci-doctor.qvac.lopeselio.online) is the same UI built with `VITE_STATIC=1` and published by [`.github/workflows/pages.yml`](.github/workflows/pages.yml):
+
+- The rules engine runs in the page, so pasted logs are never uploaded.
+- It comes with a few real CI logs to try.
+- Reading GitHub runs, explanations and posting need the local `ci-doctor ui`.
 
 ## In GitHub Actions
 
