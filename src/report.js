@@ -1,5 +1,5 @@
 import { excerpt } from './diagnose.js'
-import { MARKER } from './github.js'
+import { MARKER } from './marker.js'
 
 const HEADLINE = {
   failure: { icon: '✖', md: '🔴', text: 'Real failure: needs a fix' },

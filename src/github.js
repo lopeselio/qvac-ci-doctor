@@ -4,7 +4,9 @@ import { spawn } from 'node:child_process'
 // in on developer machines and preinstalled on GitHub's runners (with
 // GH_TOKEN). `exec` is injectable so tests never touch the network.
 
-export const MARKER = '<!-- qvac-ci-doctor -->'
+import { MARKER } from './marker.js'
+
+export { MARKER }
 
 export class LogsUnavailableError extends Error {
   constructor (detail) {
