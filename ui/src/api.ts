@@ -77,9 +77,15 @@ export const api = {
   diagnose: (ref: string, repo: string, context: boolean) => post<Diagnosis>('/api/diagnose', { ref, repo, context }),
   log: (text: string): Promise<Diagnosis> => STATIC
     ? Promise.resolve(diagnoseHere(text))
-    : request<Diagnosis>('/api/log', { method: 'POST', headers: { 'content-type': 'text/plain; charset=utf-8' }, body: text }),
+    // octet-stream, not text/plain: the server refuses "simple" requests any site could send.
+    : request<Diagnosis>('/api/log', { method: 'POST', headers: { 'content-type': 'application/octet-stream' }, body: text }),
   /** The Markdown report for a diagnosis. */
-  markdown: async (id: string): Promise<string> => STATIC ? markdownHere(id) : (await fetch(`/api/report/${id}.md`)).text(),
+  markdown: async (id: string): Promise<string> => {
+    if (STATIC) return markdownHere(id)
+    const res = await fetch(`/api/report/${id}.md`)
+    if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error ?? 'That diagnosis has expired. Diagnose it again.')
+    return res.text()
+  },
   comment: (id: string) => post<{ url: string | null, where: string }>('/api/comment', { id }),
 
   /** Streams the local model's explanation as NDJSON events. */
