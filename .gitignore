@@ -2,3 +2,6 @@ node_modules/
 *.log
 !test/fixtures/*.log
 .DS_Store
+ui/dist/
+ui/node_modules/
+ui/tsconfig.tsbuildinfo

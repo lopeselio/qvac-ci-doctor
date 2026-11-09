@@ -16,11 +16,16 @@
     "action.yml",
     "qvac.config.json",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "ui/dist"
   ],
   "scripts": {
+    "start": "node bin/ci-doctor.js ui",
     "test": "node --test",
-    "eval": "node bin/ci-doctor.js eval test/fixtures"
+    "eval": "node bin/ci-doctor.js eval test/fixtures",
+    "build:ui": "npm --prefix ui ci && npm --prefix ui run build",
+    "dev:ui": "npm --prefix ui run dev",
+    "prepack": "npm run build:ui"
   },
   "engines": {
     "node": ">=22"
