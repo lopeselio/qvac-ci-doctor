@@ -1,0 +1,44 @@
+# Publishes the in-browser CI Doctor (ui/ built with VITE_STATIC=1) to GitHub
+# Pages: paste or drop a CI log and the rules engine diagnoses it in the page.
+name: Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: ui/package-lock.json
+      - run: npm ci
+        working-directory: ui
+      - run: npm run build
+        working-directory: ui
+        env:
+          VITE_STATIC: '1'
+      - run: node ../scripts/check-no-inline-scripts.mjs dist/index.html
+        working-directory: ui
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ui/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

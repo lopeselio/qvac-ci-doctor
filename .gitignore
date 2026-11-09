@@ -5,3 +5,4 @@ node_modules/
 ui/dist/
 ui/node_modules/
 ui/tsconfig.tsbuildinfo
+ui/dist-static/
