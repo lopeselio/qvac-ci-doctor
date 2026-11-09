@@ -111,3 +111,4 @@ footer { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px 22px; color:
 .examples { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .chip { font: inherit; font-size: 13px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
 .chip:hover:not(:disabled) { border-color: var(--accent); }
+.dim { opacity: .45; pointer-events: none; transition: opacity .15s; }

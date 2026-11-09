@@ -65,11 +65,12 @@ export function App () {
       )}
       {error && <p className='err' role='alert'>{error}</p>}
       {busy && <p className='muted loading'>Reading the log and checking it against ci-doctor&apos;s rules…</p>}
-      {result && state && !busy && (
-        <>
+      {/* Kept mounted while the next one loads, so a failed lookup doesn't lose an explanation. */}
+      {result && state && (
+        <div className={busy ? 'dim' : undefined}>
           {source && <p className='muted small source'>Diagnosis of <span className='mono'>{source}</span></p>}
           <Result d={result} state={state} toast={toast} />
-        </>
+        </div>
       )}
 
       <footer>
