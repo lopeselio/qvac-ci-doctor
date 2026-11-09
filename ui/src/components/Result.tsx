@@ -18,8 +18,13 @@ export function Result ({ d, state, toast }: { d: Diagnosis, state: State, toast
   const [confirm, setConfirm] = useState(false)
   const [posting, setPosting] = useState(false)
   const [showOthers, setShowOthers] = useState(false)
+  const [postedUrl, setPostedUrl] = useState<string | null>(null)
+  const [md, setMd] = useState<string | null>(null)
 
-  useEffect(() => { setExplanation(null); setExplaining(null); setDraft(''); setExplainError(null); setConfirm(false); setShowOthers(false) }, [d.id])
+  useEffect(() => { setExplanation(null); setExplaining(null); setDraft(''); setExplainError(null); setConfirm(false); setShowOthers(false); setPostedUrl(null) }, [d.id])
+  // Fetch the report ahead of the click: Safari only allows a clipboard write
+  // straight from the click, not after a network round trip.
+  useEffect(() => { setMd(null); api.markdown(d.id).then(setMd).catch(() => setMd(null)) }, [d.id, explanation])
 
   async function explain () {
     setExplainError(null)
@@ -44,7 +49,8 @@ export function Result ({ d, state, toast }: { d: Diagnosis, state: State, toast
     try {
       const r = await api.comment(d.id)
       toast(`Posted on ${r.where}.`)
-      if (r.url) window.open(r.url, '_blank', 'noopener')
+      // A link, not window.open: a popup after a network wait gets blocked.
+      setPostedUrl(r.url)
     } catch (err) {
       toast((err as Error).message)
     } finally {
@@ -55,13 +61,15 @@ export function Result ({ d, state, toast }: { d: Diagnosis, state: State, toast
 
   async function copyMarkdown () {
     try {
-      await navigator.clipboard.writeText(await api.markdown(d.id))
+      await navigator.clipboard.writeText(md ?? await api.markdown(d.id))
       toast('Copied the Markdown report.')
-    } catch { toast('Copy failed.') }
+    } catch (err) { toast((err as Error).message || 'Copy failed.') }
   }
 
   async function download () {
-    const url = URL.createObjectURL(new Blob([await api.markdown(d.id)], { type: 'text/markdown' }))
+    let text: string
+    try { text = md ?? await api.markdown(d.id) } catch (err) { return toast((err as Error).message) }
+    const url = URL.createObjectURL(new Blob([text], { type: 'text/markdown' }))
     const a = document.createElement('a')
     a.href = url
     a.download = `ci-doctor-${d.run?.id ?? 'log'}.md`
@@ -155,6 +163,7 @@ export function Result ({ d, state, toast }: { d: Diagnosis, state: State, toast
               )
             : <button type='button' className='btn' onClick={() => setConfirm(true)}>Post to {d.pr ? `PR #${d.pr}` : 'the commit'}…</button>
         )}
+        {postedUrl && <a className='btn' href={postedUrl} target='_blank' rel='noopener noreferrer'>View the comment ↗</a>}
       </section>
     </div>
   )
