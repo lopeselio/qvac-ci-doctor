@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { api, type Diagnosis, type State } from './api'
+import { api, STATIC, type Diagnosis, type State } from './api'
 import { Input } from './components/Input'
 import { Result } from './components/Result'
 
@@ -38,7 +38,8 @@ export function App () {
     ? { tone: 'bad', text: "CI Doctor isn't running" }
     : !state
         ? { tone: 'idle', text: 'Connecting…' }
-        : state.gh.signedIn ? { tone: 'ok', text: `GitHub · @${state.gh.user}` } : { tone: 'warn', text: 'GitHub CLI not signed in' }
+        : STATIC ? { tone: 'ok', text: 'Runs in your browser · logs stay here' }
+          : state.gh.signedIn ? { tone: 'ok', text: `GitHub · @${state.gh.user}` } : { tone: 'warn', text: 'GitHub CLI not signed in' }
 
   return (
     <div className='wrap'>
@@ -49,7 +50,7 @@ export function App () {
         </div>
         <div className='pills'>
           <span className='pill'><span className={`dot ${pill.tone}`} />{pill.text}</span>
-          {state && <span className='pill'><span className={`dot ${state.qvac ? 'ok' : 'idle'}`} />{state.qvac ? 'QVAC · explanations on this computer' : 'QVAC off'}</span>}
+          {state && !STATIC && <span className='pill'><span className={`dot ${state.qvac ? 'ok' : 'idle'}`} />{state.qvac ? 'QVAC · explanations on this computer' : 'QVAC off'}</span>}
         </div>
       </header>
 
@@ -73,7 +74,9 @@ export function App () {
 
       <footer>
         <span><b>Rules make the diagnosis.</b> The local model only explains it, and only when its answer passes checks.</span>
-        <span><b>Logs stay on this computer.</b> GitHub is read through your <code>gh</code> login.</span>
+        {STATIC
+          ? <span><b>Logs stay in your browser.</b> The diagnosis runs on this page; nothing is uploaded.</span>
+          : <span><b>Logs stay on this computer.</b> GitHub is read through your <code>gh</code> login.</span>}
         <span><a href='https://github.com/lopeselio/qvac-ci-doctor' rel='noopener noreferrer' target='_blank'>Source on GitHub</a></span>
       </footer>
       <div className={`toast ${toastMsg ? 'show' : ''}`} role='status'>{toastMsg}</div>
