@@ -1,4 +1,9 @@
-// Typed client for the local CI Doctor server (src/ui-server.js).
+// Typed client for the local CI Doctor server (src/ui-server.js), or, in the
+// in-browser build (VITE_STATIC=1), the rules engine running in this page.
+import { diagnoseHere, markdownHere } from './local'
+
+/** True for the hosted, in-browser build. */
+export const STATIC = import.meta.env.VITE_STATIC === '1'
 
 export type Verdict = 'passed' | 'flaky' | 'maybe-flaky' | 'failure' | 'unknown' | string
 
@@ -40,6 +45,7 @@ export interface Diagnosis {
 export interface FailedRun { id: number, title: string, workflow: string, branch: string, event: string, at: string, url: string, number: number }
 
 export interface State {
+  static?: boolean
   repo: string | null
   gh: { signedIn: boolean, user: string | null }
   qvac: boolean
@@ -64,10 +70,16 @@ const post = <T>(path: string, body: unknown) =>
   request<T>(path, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
 
 export const api = {
-  state: () => request<State>('/api/state'),
+  state: (): Promise<State> => STATIC
+    ? Promise.resolve({ static: true, repo: null, gh: { signedIn: false, user: null }, qvac: false, model: 'QWEN3_1_7B_INST_Q4', explainer: null })
+    : request<State>('/api/state'),
   runs: (repo: string) => request<FailedRun[]>(`/api/runs?repo=${encodeURIComponent(repo)}`),
   diagnose: (ref: string, repo: string, context: boolean) => post<Diagnosis>('/api/diagnose', { ref, repo, context }),
-  log: (text: string) => request<Diagnosis>('/api/log', { method: 'POST', headers: { 'content-type': 'text/plain; charset=utf-8' }, body: text }),
+  log: (text: string): Promise<Diagnosis> => STATIC
+    ? Promise.resolve(diagnoseHere(text))
+    : request<Diagnosis>('/api/log', { method: 'POST', headers: { 'content-type': 'text/plain; charset=utf-8' }, body: text }),
+  /** The Markdown report for a diagnosis. */
+  markdown: async (id: string): Promise<string> => STATIC ? markdownHere(id) : (await fetch(`/api/report/${id}.md`)).text(),
   comment: (id: string) => post<{ url: string | null, where: string }>('/api/comment', { id }),
 
   /** Streams the local model's explanation as NDJSON events. */
