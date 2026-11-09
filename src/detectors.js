@@ -621,7 +621,9 @@ export function moduleNotFound (lines) {
 
 /** The package a path belongs to: ".../node_modules/@scope/pkg/build/x.js" → "@scope/pkg". */
 export function packageOf (path) {
-  // The innermost node_modules is the package that holds the file.
+  // The innermost node_modules is the package that holds the file (Windows
+  // runners print backslashes).
+  path = path.replace(/\\/g, '/')
   const at = path.lastIndexOf('node_modules/')
   if (at === -1) return null
   const m = /^((?:@[^/]+\/)?[^/]+)/.exec(path.slice(at + 'node_modules/'.length))

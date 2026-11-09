@@ -26,5 +26,6 @@ test('packageOf finds the package a node_modules path belongs to', () => {
   assert.equal(packageOf('/a/node_modules/expo-asset/build/x.js'), 'expo-asset')
   assert.equal(packageOf('/a/node_modules/@scope/pkg/dist'), '@scope/pkg')
   assert.equal(packageOf('/a/node_modules/x/node_modules/y/index.js'), 'y')
+  assert.equal(packageOf('D:\\a\\app\\node_modules\\expo-asset\\build\\x.js'), 'expo-asset')
   assert.equal(packageOf('/a/src/main.ts'), null)
 })
