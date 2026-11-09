@@ -16,6 +16,7 @@ Usage:
   ci-doctor latest                     diagnose the latest failed run
   ci-doctor log <file | ->             diagnose a log file (or stdin), no GitHub needed
   ci-doctor eval <dir>                 score ci-doctor against logs with known answers
+  ci-doctor ui [--port 4500]           open the web UI (runs, pasted logs, explanations)
 
 Options:
   -R, --repo <owner/name>   repository (default: the one you're in)
@@ -50,6 +51,8 @@ const { values: v, positionals } = parseArgs({
     'no-context': { type: 'boolean' },
     min: { type: 'string' },
     'exit-zero': { type: 'boolean' },
+    port: { type: 'string' },
+    'no-open': { type: 'boolean' },
     help: { type: 'boolean', short: 'h' }
   }
 })
@@ -117,9 +120,38 @@ async function output ({ diagnosis, run = null, context = {} }, model) {
   return diagnosis.verdict
 }
 
+async function ui () {
+  const { createUiServer } = await import('../src/ui-server.js')
+  // Import the SDK first: importing it registers SIGINT/SIGTERM handlers,
+  // which are replaced below so Ctrl+C unloads the model and exits cleanly.
+  let sdk = null
+  try { sdk = await import('@qvac/sdk') } catch { say('▸ @qvac/sdk isn\'t installed: diagnoses work, plain-words explanations are off\n') }
+  const repo = v.repo ?? await new GitHub().resolveRepo().catch(() => null)
+  const server = createUiServer({ loadSdk: sdk ? async () => sdk : undefined, repo, model: v.model, log: (l) => say(`▸ ${l}\n`) })
+  const url = await server.listen(Number(v.port ?? 4500))
+  say(`CI Doctor: ${url}${repo ? `  (repository ${repo})` : ''}  Ctrl+C to stop\n`)
+  if (!v['no-open']) {
+    const opener = process.platform === 'darwin' ? 'open' : process.platform === 'win32' ? 'explorer' : 'xdg-open'
+    spawn(opener, [url], { stdio: 'ignore', detached: true }).on('error', () => {}).unref()
+  }
+  process.removeAllListeners('SIGINT')
+  process.removeAllListeners('SIGTERM')
+  let stopping = false
+  const stop = async () => {
+    if (stopping) process.exit(130)
+    stopping = true
+    await server.close()
+    process.exit(0)
+  }
+  process.on('SIGINT', stop)
+  process.on('SIGTERM', stop)
+  return new Promise(() => {})
+}
+
 async function main () {
   const [cmd, arg] = positionals
   if (v.help || !cmd) { print(HELP); return 0 }
+  if (cmd === 'ui') return ui()
   const model = v.explain ? await loadModel() : null
   try {
     if (cmd === 'log') {
