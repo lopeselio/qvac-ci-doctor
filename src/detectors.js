@@ -619,6 +619,56 @@ export function moduleNotFound (lines) {
   return found
 }
 
+/** The package a path belongs to: ".../node_modules/@scope/pkg/build/x.js" → "@scope/pkg". */
+export function packageOf (path) {
+  // The innermost node_modules is the package that holds the file.
+  const at = path.lastIndexOf('node_modules/')
+  if (at === -1) return null
+  const m = /^((?:@[^/]+\/)?[^/]+)/.exec(path.slice(at + 'node_modules/'.length))
+  return m ? m[1] : null
+}
+
+/**
+ * A bundler that can't resolve an import: Metro (React Native, Expo),
+ * webpack, Vite/Rollup and esbuild. When the importer lives in node_modules,
+ * that package usually is the problem: a version built for a different
+ * framework release than the one installed.
+ */
+export function bundlerUnresolved (lines) {
+  const found = []
+  const patterns = [
+    [/Unable to resolve module (\S+) from (\S+?):?(?:\s|$)/, 'Metro'],
+    [/Module not found: (?:Error: )?Can't resolve '([^']+)' in '([^']+)'/, 'webpack'],
+    [/(?:Rollup failed to resolve|Failed to resolve) import "([^"]+)" from "([^"]+)"/, 'Vite'],
+    [/Could not resolve "([^"]+)"/, 'esbuild']
+  ]
+  for (const l of lines) {
+    const t = body(l.text)
+    for (const [re, tool] of patterns) {
+      const m = re.exec(t)
+      if (!m) continue
+      const spec = m[1]
+      const from = m[2] ? normalizePath(m[2]) : null
+      const pkg = m[2] ? packageOf(m[2]) : null
+      found.push(base(l, {
+        id: 'bundler-unresolved',
+        category: 'build',
+        title: `${tool} can't resolve ${spec}`,
+        detail: pkg ? `Imported by ${pkg} (${from}).` : from ? `Imported from ${from}.` : '',
+        key: `bundler:${spec}`,
+        file: pkg ? null : from,
+        fix: pkg
+          ? `${pkg} imports ${spec}, which the installed packages don't provide. Usually ${pkg} is a version made for a different release of its framework: compare \`npm ls ${pkg}\` with what the framework expects (Expo: \`npx expo install --check\`), and pin ${pkg} to that version. A peer dependency declared as "*" can pull in the latest major.`
+          : `Install the package that provides ${spec}, or fix the import path (Linux runners are case-sensitive).`,
+        priority: 76,
+        flaky: 'no'
+      }))
+      break
+    }
+  }
+  return found
+}
+
 /** CTest (C/C++ tests, e.g. Bare): "The following tests FAILED:". */
 export function ctest (lines) {
   const found = []
@@ -1156,4 +1206,4 @@ export function exitCode (lines) {
 }
 
 /** In priority order: earlier detectors claim a line first. */
-export const DETECTORS = [npm, dependabot, nodeGyp, typescript, nativeCompile, rust, tap, jest, nodeSpec, mocha, ctest, coverage, prettier, lint, knip, moduleNotFound, network, memory, testTimeout, runner, pythonStdout, uncaught, runners, annotations, exitCode]
+export const DETECTORS = [npm, dependabot, nodeGyp, typescript, nativeCompile, rust, tap, jest, nodeSpec, mocha, ctest, coverage, prettier, lint, knip, bundlerUnresolved, moduleNotFound, network, memory, testTimeout, runner, pythonStdout, uncaught, runners, annotations, exitCode]
