@@ -83,6 +83,17 @@ export class GitHub {
     return list?.[0]?.databaseId ?? null
   }
 
+  /** Recent failed runs, newest first, for picking one to diagnose. */
+  async recentFailures ({ limit = 15 } = {}) {
+    const fields = 'databaseId,displayTitle,workflowName,headBranch,event,createdAt,url,number'
+    return (await this.json(['run', 'list', ...this._r(), '-s', 'failure', '-L', String(limit), '--json', fields])) ?? []
+  }
+
+  /** The signed-in GitHub user, or null if gh isn't signed in. */
+  async user () {
+    try { return (await this.exec(['api', 'user', '-q', '.login'])).trim() || null } catch { return null }
+  }
+
   async pullRequestFor (run) {
     const repo = await this.resolveRepo()
     const prs = await this.json(['api', `repos/${repo}/commits/${run.headSha}/pulls`])
