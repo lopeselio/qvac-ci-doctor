@@ -126,11 +126,14 @@ test('diagnoses a run end to end, explains it with the local model, and posts on
 test('a pasted log is diagnosed without GitHub, and has nothing to post', async (t) => {
   await withServer(t, { github: fakeGitHub('', []) }, async (url) => {
     const log = await readFile(METRO, 'utf8')
-    const d = (await call(url + 'api/log', { method: 'POST', body: log, headers: { 'content-type': 'text/plain' } })).json()
+    // Plain text is a CORS simple request any site could send: refused.
+    assert.equal((await call(url + 'api/log', { method: 'POST', body: log, headers: { 'content-type': 'text/plain' } })).status, 415)
+    const d = (await call(url + 'api/log', { method: 'POST', body: log, headers: { 'content-type': 'application/octet-stream' } })).json()
+    assert.equal(d.lineCount, 327, 'the full length is reported even though only nearby lines are kept')
     assert.equal(d.verdict, 'failure')
     assert.equal(d.run, null)
     assert.equal((await post(url + 'api/comment', { id: d.id })).status, 409)
-    assert.equal((await call(url + 'api/log', { method: 'POST', body: '  ', headers: { 'content-type': 'text/plain' } })).status, 400)
+    assert.equal((await call(url + 'api/log', { method: 'POST', body: '  ', headers: { 'content-type': 'application/octet-stream' } })).status, 400)
     // No QVAC in this session: explanations say so instead of failing oddly.
     const ex = await post(url + 'api/explain', { id: d.id })
     assert.match(ex.body, /QVAC isn't available/)

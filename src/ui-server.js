@@ -7,8 +7,9 @@
 //
 // Like the other QVAC UIs it only listens on 127.0.0.1, rejects foreign Host
 // headers (DNS rebinding), serves a strict CSP and only accepts JSON or
-// plain-text POSTs, which a cross-site form can't send without a CORS
-// preflight we never answer. Posting a comment needs an explicit request
+// application/octet-stream POSTs. Neither is a CORS "simple" content type, so
+// another website can't send them without a preflight we never answer (plain
+// text could be posted by any page, which would let it flood this server). Posting a comment needs an explicit request
 // from the page (a button the user confirms); nothing is posted otherwise.
 
 import { createServer } from 'node:http'
@@ -27,6 +28,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const MAX_BODY = 64 * 1024
 const MAX_LOG = 64 * 1024 * 1024 // GitHub logs run to tens of MB
 const KEEP = 30 // diagnoses kept for explain / comment / download
+const NEAR = 12 // log lines kept around each finding
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -76,6 +78,18 @@ export function createUiServer ({ loadSdk, github = (repo) => new GitHub({ repo 
   const status = { model: null } // { state, download } while the explainer loads
   let closing = false
 
+  /**
+   * Keep only the log lines near a finding: enough for the evidence, the
+   * explanation and the Markdown report, without holding whole logs (tens of
+   * MB each) for every remembered diagnosis.
+   */
+  function compact (entry) {
+    const d = entry.diagnosis
+    const keep = new Set()
+    for (const f of d.findings ?? []) for (const n of f.lines ?? []) for (let k = n - NEAR; k <= n + NEAR; k++) keep.add(k)
+    return { ...entry, lineCount: d.lines.length, diagnosis: { ...d, lines: d.lines.filter((l) => keep.has(l.n)) } }
+  }
+
   function remember (entry) {
     const id = randomUUID()
     results.set(id, entry)
@@ -84,7 +98,8 @@ export function createUiServer ({ loadSdk, github = (repo) => new GitHub({ repo 
   }
 
   function view (id) {
-    return diagnosisView(id, results.get(id))
+    const entry = results.get(id)
+    return { ...diagnosisView(id, entry), lineCount: entry.lineCount ?? entry.diagnosis.lines.length }
   }
 
   function sdk () {
@@ -123,12 +138,11 @@ export function createUiServer ({ loadSdk, github = (repo) => new GitHub({ repo 
     try {
       out = await diagnoseRun({ ref, repo: r, gh: github(r), context: body.context !== false })
     } catch (err) {
-      if (/still (?:in_progress|queued|waiting|pending)/.test(err.message)) throw fail(409, err.message)
-      if (/must be|Not a run|invalid/i.test(err.message)) throw fail(400, err.message)
+      if (/ is still \w+/.test(err.message)) throw fail(409, err.message)
       throw ghError(err)
     }
     const used = parseRunRef(ref).repo ?? r
-    return view(remember({ ...out, repo: used }))
+    return view(remember(compact({ ...out, repo: used })))
   }
 
   async function recent (r) {
@@ -145,6 +159,12 @@ export function createUiServer ({ loadSdk, github = (repo) => new GitHub({ repo 
     if (!entry) throw fail(404, 'That diagnosis has expired. Diagnose the run again.')
     if (!entry.diagnosis.causes.length) throw fail(409, 'There is nothing to explain.')
     if (entry.explanation) return send(res, 200, { explanation: entry.explanation })
+    // Already being explained (a second click, another tab): wait for that run.
+    if (entry.explaining) {
+      const explanation = await entry.explaining.catch(() => null)
+      if (explanation) return send(res, 200, { explanation })
+      throw fail(503, 'The explanation failed. Try again.')
+    }
     res.writeHead(200, { 'content-type': 'application/x-ndjson; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' })
     const emit = (ev) => { if (!res.destroyed) res.write(JSON.stringify(ev) + '\n') }
     const timer = setInterval(() => { if (status.model?.state !== 'ready') emit({ type: 'status', model: status.model }) }, 500)
@@ -155,6 +175,7 @@ export function createUiServer ({ loadSdk, github = (repo) => new GitHub({ repo 
       // One explanation at a time: the model answers one request at a time.
       const work = explaining.then(() => explainWithLlm({ ...m, diagnosis: entry.diagnosis, context: entry.context, onText: (text) => emit({ type: 'delta', text }) }))
       explaining = work.catch(() => {})
+      entry.explaining = work
       const explanation = await work
       delete explanation.raw
       entry.explanation = explanation
@@ -163,6 +184,7 @@ export function createUiServer ({ loadSdk, github = (repo) => new GitHub({ repo 
       emit({ type: 'error', message: err.message })
     } finally {
       clearInterval(timer)
+      delete entry.explaining
       res.end()
     }
   }
@@ -253,9 +275,9 @@ export function createUiServer ({ loadSdk, github = (repo) => new GitHub({ repo 
         notClosing()
         if (p === '/api/diagnose') return send(res, 200, await diagnoseRef(await readJson(req)))
         if (p === '/api/log') {
-          const text = (await readBody(req, 'text/plain', MAX_LOG)).toString('utf8')
+          const text = (await readBody(req, 'application/octet-stream', MAX_LOG)).toString('utf8')
           if (!text.trim()) throw fail(400, 'Paste or drop a log first.')
-          return send(res, 200, view(remember({ run: null, diagnosis: diagnose(text), context: {}, repo: null })))
+          return send(res, 200, view(remember(compact({ run: null, diagnosis: diagnose(text), context: {}, repo: null }))))
         }
         if (p === '/api/explain') return await explain(req, res)
         if (p === '/api/comment') return send(res, 200, await comment(await readJson(req)))
