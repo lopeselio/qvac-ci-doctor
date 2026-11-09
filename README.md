@@ -68,7 +68,7 @@ CI logs are untrusted: a test can print anything, including instructions aimed a
 
 | Set | Explanations that passed the checks | Average time |
 |---|---|---|
-| 18 labelled fixtures | 18 / 18 | 0.6 s |
+| 19 labelled fixtures | 19 / 19 | 0.6 s |
 | 10 real Tether and Holepunch failures | 10 / 10 | 0.9 s |
 | 10 held-out real failures | 8–9 / 10 across three runs (the model isn't fully deterministic) | 0.9 s |
 
@@ -93,8 +93,9 @@ I also tested it on real failures from public repositories, mostly Tether and Ho
 | 2 | 4 / 6 | Knip, node-gyp, Python stdout errors, node:test summaries, brittle stacks |
 | 3 | 4 / 9 | Lunte, C/C++ compile errors, Rust tests, mocha summaries, a network false positive |
 | 4 | 7 / 10 | npm's release-age setting, node:test GitHub reporter, mocha across jobs |
+| 5 | 1 / 2 | bundler resolution errors (Metro, webpack, Vite, esbuild), naming the package that made the import |
 
-All 32 now pass, along with the 18 fixtures and the 10 logs used during development, but only the blind column is a fair measure. The latest batch got 7 of 10 right first time. Expect it to miss formats it hasn't met. When that happens it says "cause unclear" (exit 3) rather than guessing.
+All 34 now pass, along with the 19 fixtures and the 10 logs used during development, but only the blind column is a fair measure. Batch 5 was two real failures from the [Pocket Tune](https://github.com/lopeselio/qvac-pocket-tune) repository: a missing `@expo/config-plugins` was diagnosed correctly, but an Expo build that failed because `expo-asset`'s `"*"` peer dependency pulled in a newer major was "cause unclear" until the bundler detector was added. That log is now a fixture. Expect it to miss formats it hasn't met. When that happens it says "cause unclear" (exit 3) rather than guessing.
 
 ## Use it
 
