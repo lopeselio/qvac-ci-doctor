@@ -1,0 +1,327 @@
+mobile	UNKNOWN STEP	﻿2026-11-09T09:22:35.4649942Z Current runner version: '2.338.2'
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4674128Z ##[group]Runner Image Provisioner
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4675023Z Hosted Compute Agent
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4675836Z Version: 20261028.624
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4676933Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4677763Z Build Date: 2026-10-28T21:51:42Z
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4678492Z Worker ID: {ebfa9c09-56e0-4795-b53c-8e2208821dcf}
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4679222Z Region: westcentralus
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4680200Z Cloud: Azure
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4680787Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4682289Z ##[group]Operating System
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4682961Z Ubuntu
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4683515Z 26.04.1
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4684201Z LTS
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4684752Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4685359Z ##[group]Runner Image
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4686015Z Image: ubuntu-26.04
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4686938Z Version: 20261101.186.1
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4688348Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261101.186/images/ubuntu/Ubuntu2604-Readme.md
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4689969Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261101.186
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4690985Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4692327Z ##[group]GITHUB_TOKEN Permissions
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4694243Z Contents: read
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4694867Z Metadata: read
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4695555Z Packages: read
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4696332Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4698451Z Secret source: Actions
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4699607Z Cache mode: write
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.4700315Z Prepare workflow directory
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.5102931Z Prepare all required actions
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.5150535Z Getting action download info
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.7701575Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+mobile	UNKNOWN STEP	2026-11-09T09:22:35.9065106Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.0756907Z Complete job name: mobile
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1646850Z ##[group]Run actions/checkout@v4
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1647813Z with:
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1648301Z   repository: lopeselio/qvac-pocket-tune
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1652486Z   token: ***
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1652953Z   ssh-strict: true
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1653413Z   ssh-user: git
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1653874Z   persist-credentials: true
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1654377Z   clean: true
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1654837Z   sparse-checkout-cone-mode: true
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1655369Z   fetch-depth: 1
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1655816Z   fetch-tags: false
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1656525Z   show-progress: true
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1656990Z   lfs: false
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1657425Z   submodules: false
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1657889Z   set-safe-directory: true
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1658422Z   allow-unsafe-pr-checkout: false
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.1659163Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4047264Z Syncing repository: lopeselio/qvac-pocket-tune
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4049670Z ##[group]Getting Git version info
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4050980Z Working directory is '/home/runner/work/qvac-pocket-tune/qvac-pocket-tune'
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4052733Z [command]/usr/bin/git version
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4053293Z git version 2.56.0
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4070781Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4084928Z Temporarily overriding HOME='/home/runner/work/_temp/3bd01fe0-23ae-49c2-bb0b-3ec936028e86' before making global git config changes
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4087447Z Adding repository directory to the temporary git global config as a safe directory
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4090097Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/qvac-pocket-tune/qvac-pocket-tune
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4148932Z Deleting the contents of '/home/runner/work/qvac-pocket-tune/qvac-pocket-tune'
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4152104Z ##[group]Initializing the repository
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4156913Z [command]/usr/bin/git init /home/runner/work/qvac-pocket-tune/qvac-pocket-tune
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4232193Z hint: Using 'master' as the name for the initial branch. This default branch name
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4234328Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4236051Z hint: to use in all of your new repositories, which will suppress this warning,
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4237575Z hint: call:
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4238364Z hint:
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4239328Z hint: 	git config --global init.defaultBranch <name>
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4240461Z hint:
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4241568Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4243336Z hint: 'development'. The just-created branch can be renamed via this command:
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4244655Z hint:
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4245545Z hint: 	git branch -m <name>
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4246654Z hint:
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4247794Z hint: Disable this message with "git config set advice.defaultBranchName false"
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4249686Z Initialized empty Git repository in /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/.git/
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4252934Z [command]/usr/bin/git remote add origin https://github.com/lopeselio/qvac-pocket-tune
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4305462Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4306736Z ##[group]Disabling automatic garbage collection
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4309877Z [command]/usr/bin/git config --local gc.auto 0
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4358238Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4359672Z ##[group]Setting up auth
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4368282Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4424146Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4863770Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.4906387Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.5227114Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.5270395Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.5577936Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.5625653Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.5626804Z ##[group]Fetching the repository
+mobile	UNKNOWN STEP	2026-11-09T09:22:36.5639275Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +3b3b680e43c9aac8bd91c07d205d1c1f95cacfad:refs/remotes/pull/12/merge
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1439314Z From https://github.com/lopeselio/qvac-pocket-tune
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1440886Z  * [new ref]         3b3b680e43c9aac8bd91c07d205d1c1f95cacfad -> pull/12/merge
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1450068Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1452319Z ##[group]Determining the checkout info
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1454588Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1459399Z [command]/usr/bin/git sparse-checkout disable
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1511504Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1552486Z ##[group]Checking out the ref
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1555760Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/12/merge
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1724924Z Note: switching to 'refs/remotes/pull/12/merge'.
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1726040Z 
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1727218Z You are in 'detached HEAD' state. You can look around, make experimental
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1729479Z changes and commit them, and you can discard any commits you make in this
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1731440Z state without impacting any branches by switching back to a branch.
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1732979Z 
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1734116Z If you want to create a new branch to retain commits you create, you may
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1736825Z do so (now or later) by using -c with the switch command. Example:
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1738511Z 
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1739208Z   git switch -c <new-branch-name>
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1740161Z 
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1740993Z Or undo this operation with:
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1742104Z 
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1742952Z   git switch -
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1743864Z 
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1745310Z Turn off this advice by setting config variable advice.detachedHead to false
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1747375Z 
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1749873Z HEAD is now at 3b3b680 Merge 64f73702f550ab1d2392e83452e8ae5c23e63016 into f8a0cf4d209d9ac895ded93ca2143613e09b413d
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1754777Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1783733Z [command]/usr/bin/git log -1 --format=%H
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.1810690Z 3b3b680e43c9aac8bd91c07d205d1c1f95cacfad
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.2303797Z ##[group]Run actions/setup-node@v4
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.2305068Z with:
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.2305989Z   node-version: 24
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.2307162Z   cache: npm
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.2308286Z   cache-dependency-path: mobile/package-lock.json
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.2309782Z   always-auth: false
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.2310840Z   check-latest: false
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.2322164Z   token: ***
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.2323114Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.3819078Z Found in cache @ /opt/hostedtoolcache/node/24.22.2/x64
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.3824153Z (node:2466) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.3825422Z (Use `node --trace-deprecation ...` to show where the warning was created)
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.3826789Z ##[group]Environment details
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.7243558Z node: v24.22.2
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.7244065Z npm: 11.19.1
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.7244379Z yarn: 1.22.22
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.7245482Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.7264631Z [command]/opt/hostedtoolcache/node/24.22.2/x64/bin/npm config get cache
+mobile	UNKNOWN STEP	2026-11-09T09:22:37.8328826Z /home/runner/.npm
+mobile	UNKNOWN STEP	2026-11-09T09:22:38.0359750Z npm cache is not found
+mobile	UNKNOWN STEP	2026-11-09T09:22:38.0532815Z ##[group]Run npm ci
+mobile	UNKNOWN STEP	2026-11-09T09:22:38.0533222Z ^[[36;1mnpm ci^[[0m
+mobile	UNKNOWN STEP	2026-11-09T09:22:38.0600555Z shell: /usr/bin/bash -e {0}
+mobile	UNKNOWN STEP	2026-11-09T09:22:38.0600917Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:22:41.2262761Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+mobile	UNKNOWN STEP	2026-11-09T09:22:42.3575015Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+mobile	UNKNOWN STEP	2026-11-09T09:22:47.9207138Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+mobile	UNKNOWN STEP	2026-11-09T09:22:48.0738103Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+mobile	UNKNOWN STEP	2026-11-09T09:22:48.0749353Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+mobile	UNKNOWN STEP	2026-11-09T09:22:49.3750757Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+mobile	UNKNOWN STEP	2026-11-09T09:23:16.5576417Z npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.1478840Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.1479816Z added 1249 packages, and audited 1250 packages in 1m
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.1480933Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.1483588Z 178 packages are looking for funding
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.1483968Z   run `npm fund` for details
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.3821495Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.3822921Z 29 vulnerabilities (1 low, 20 moderate, 8 high)
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.3823418Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.3823781Z To address issues that do not require attention, run:
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.3824381Z   npm audit fix
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.3824587Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.3824956Z To address all issues (including breaking changes), run:
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.3825535Z   npm audit fix --force
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.3825789Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.3826001Z Run `npm audit` for details.
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.6094680Z ##[group]Run npm run typecheck
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.6094998Z ^[[36;1mnpm run typecheck^[[0m
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.6162897Z shell: /usr/bin/bash -e {0}
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.6163182Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.7210161Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.7210945Z > pocket-tune-mobile@0.1.0 typecheck
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.7211402Z > tsc --noEmit
+mobile	UNKNOWN STEP	2026-11-09T09:23:51.7211586Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:54.2564080Z ##[group]Run npm run lint
+mobile	UNKNOWN STEP	2026-11-09T09:23:54.2564375Z ^[[36;1mnpm run lint^[[0m
+mobile	UNKNOWN STEP	2026-11-09T09:23:54.2617576Z shell: /usr/bin/bash -e {0}
+mobile	UNKNOWN STEP	2026-11-09T09:23:54.2617850Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:23:54.3610776Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:54.3611689Z > pocket-tune-mobile@0.1.0 lint
+mobile	UNKNOWN STEP	2026-11-09T09:23:54.3612247Z > expo lint
+mobile	UNKNOWN STEP	2026-11-09T09:23:54.3612448Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.5533193Z ##[group]Run npm test
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.5533479Z ^[[36;1mnpm test^[[0m
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.5588294Z shell: /usr/bin/bash -e {0}
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.5588574Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.6946509Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.6947035Z > pocket-tune-mobile@0.1.0 test
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.6947563Z > node --test test/*.test.ts
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.6947783Z 
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.8620598Z (node:2650) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/test/paths.test.ts is not specified and it doesn't parse as CommonJS.
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.8647385Z Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.8660492Z To eliminate this warning, add "type": "module" to /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/package.json.
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.8677206Z (Use `node --trace-warnings ...` to show where the warning was created)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.8738597Z ✔ toPosix strips file:// and decodes, as the QVAC worker expects (1.269631ms)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.8767465Z ✔ safeRunName makes a filesystem-safe slug (0.681576ms)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.8992935Z (node:2651) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/test/scene-plugin.test.ts is not specified and it doesn't parse as CommonJS.
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9005690Z Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9008384Z To eliminate this warning, add "type": "module" to /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/package.json.
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9009693Z (Use `node --trace-warnings ...` to show where the warning was created)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9011201Z ✔ the plugin removes only the app-delegate window from the SDK 54 template (1.427288ms)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9012486Z ✔ the scene delegate starts the same React Native module in a scene window (0.22572ms)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9014586Z (node:2657) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/test/voice.test.ts is not specified and it doesn't parse as CommonJS.
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9018489Z Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9020053Z To eliminate this warning, add "type": "module" to /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/package.json.
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9021310Z (Use `node --trace-warnings ...` to show where the warning was created)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9022415Z ✔ spoken answers become a Q&A CSV with quotes escaped (1.382611ms)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9024027Z ✔ spoken notes become one notes file, paragraphs apart (1.058703ms)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9038065Z ✔ a run is locked to whichever mode was used first (0.208293ms)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9038960Z ✔ more recording is appended to the transcript (0.159711ms)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9039686Z ✔ run names stay unique (0.246681ms)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9040365Z ✔ only formats QVAC can decode are accepted (0.214994ms)
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9112004Z ℹ tests 10
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9112749Z ℹ suites 0
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9113377Z ℹ pass 10
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9113912Z ℹ fail 0
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9114438Z ℹ cancelled 0
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9114965Z ℹ skipped 0
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9115474Z ℹ todo 0
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9116020Z ℹ duration_ms 173.724194
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9345523Z ##[group]Run npx expo export --platform android --platform ios --output-dir dist
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9346501Z ^[[36;1mnpx expo export --platform android --platform ios --output-dir dist^[[0m
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9408964Z shell: /usr/bin/bash -e {0}
+mobile	UNKNOWN STEP	2026-11-09T09:23:57.9409274Z ##[endgroup]
+mobile	UNKNOWN STEP	2026-11-09T09:23:58.8714742Z [withDeviceInfo] 🔧 QVAC: expo-device in app dependencies, using expo-device info
+mobile	UNKNOWN STEP	2026-11-09T09:23:59.2737227Z [withAndroidArchitecture] 🔧 QVAC: Set Android architectures to arm64-v8a
+mobile	UNKNOWN STEP	2026-11-09T09:23:59.2738308Z [withAndroidArchitecture] 🔧 QVAC: Set Android architectures to arm64-v8a
+mobile	UNKNOWN STEP	2026-11-09T09:23:59.2739392Z [withAndroidArchitecture] 🔧 QVAC: Set Android architectures to arm64-v8a
+mobile	UNKNOWN STEP	2026-11-09T09:23:59.2740493Z [withAndroidArchitecture] 🔧 QVAC: Set Android architectures to arm64-v8a
+mobile	UNKNOWN STEP	2026-11-09T09:23:59.2741478Z Using src/app as the root directory for Expo Router.
+mobile	UNKNOWN STEP	2026-11-09T09:23:59.5245819Z Starting Metro Bundler
+mobile	UNKNOWN STEP	2026-11-09T09:24:02.7795427Z Android node_modules/expo-router/entry.js ▓▓░░░░░░░░░░░░░░ 16.6% ( 45/184)
+mobile	UNKNOWN STEP	2026-11-09T09:24:02.7904977Z iOS node_modules/expo-router/entry.js ▓▓░░░░░░░░░░░░░░ 16.6% ( 25/152)
+mobile	UNKNOWN STEP	2026-11-09T09:24:06.2738329Z Android node_modules/expo-router/entry.js ▓▓▓▓▓▓░░░░░░░░░░ 37.9% (332/539)
+mobile	UNKNOWN STEP	2026-11-09T09:24:06.2757534Z iOS node_modules/expo-router/entry.js ▓▓▓▓▓░░░░░░░░░░░ 33.8% (300/532)
+mobile	UNKNOWN STEP	2026-11-09T09:24:09.7742287Z Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 67.5% (586/713)
+mobile	UNKNOWN STEP	2026-11-09T09:24:09.7744948Z iOS node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 56.7% (531/705)
+mobile	UNKNOWN STEP	2026-11-09T09:24:13.3103606Z Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 82.6% (780/858)
+mobile	UNKNOWN STEP	2026-11-09T09:24:13.3107469Z iOS node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 76.4% (716/819)
+mobile	UNKNOWN STEP	2026-11-09T09:24:16.8338139Z Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 85.2% ( 967/1079)
+mobile	UNKNOWN STEP	2026-11-09T09:24:16.8339594Z iOS node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 86.4% ( 944/1070)
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.7990275Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.7999212Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.8508950Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.8513467Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.8517707Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.8522320Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.8525932Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.8530363Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.8534262Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.8538438Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.8542081Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:18.8546020Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.5308594Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.5325806Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.5718721Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.5749083Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.5838072Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.5869136Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.5927935Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.6019319Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.6032603Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.6037674Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.6041621Z  WARN  The package /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk contains an invalid package.json configuration. Consider raising this issue with the package maintainer(s).
+mobile	UNKNOWN STEP	2026-11-09T09:24:19.6119988Z Reason: The resolution for "/home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/worker.mobile.bundle" defined in "exports" is /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/@qvac/sdk/dist/worker.mobile.bundle.js, however this file does not exist. Falling back to file-based resolution.
+mobile	UNKNOWN STEP	2026-11-09T09:24:20.3790529Z Android node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 93.4% (1121/1271)
+mobile	UNKNOWN STEP	2026-11-09T09:24:20.3792083Z iOS node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 92.7% (1119/1268)
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8637684Z iOS Bundling failed 23533ms node_modules/expo-router/entry.js (1368 modules)
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8644378Z Error: Unable to resolve module expo/internal/bundle-origin from /home/runner/work/qvac-pocket-tune/qvac-pocket-tune/mobile/node_modules/expo-asset/build/AssetSources.js: expo/internal/bundle-origin could not be found within the project or in these directories:
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8646593Z   node_modules/expo-asset/node_modules
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8647032Z   node_modules
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8647332Z   node_modules
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8648604Z ^[[0m ^[[90m 1 |^[[39m ^[[36mimport^[[39m { ^[[33mPlatform^[[39m } ^[[36mfrom^[[39m ^[[32m'expo-modules-core'^[[39m^[[33m;^[[39m
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8650065Z ^[[31m^[[1m>^[[22m^[[39m^[[90m 2 |^[[39m ^[[36mimport^[[39m { getBundleOrigin } ^[[36mfrom^[[39m ^[[32m'expo/internal/bundle-origin'^[[39m^[[33m;^[[39m
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8650802Z  ^[[90m   |^[[39m                                  ^[[31m^[[1m^^[[22m^[[39m
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8651610Z  ^[[90m 3 |^[[39m ^[[36mimport^[[39m { ^[[33mPixelRatio^[[39m^[[33m,^[[39m ^[[33mNativeModules^[[39m } ^[[36mfrom^[[39m ^[[32m'react-native'^[[39m^[[33m;^[[39m
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8652542Z  ^[[90m 4 |^[[39m ^[[36mimport^[[39m ^[[33mAssetSourceResolver^[[39m ^[[36mfrom^[[39m ^[[32m'./AssetSourceResolver'^[[39m^[[33m;^[[39m
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8653481Z  ^[[90m 5 |^[[39m ^[[36mimport^[[39m { getManifest2^[[33m,^[[39m manifestBaseUrl } ^[[36mfrom^[[39m ^[[32m'./PlatformUtils'^[[39m^[[33m;^[[39m^[[0m
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8653913Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8654020Z Import stack:
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8654155Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8654312Z  node_modules/expo-asset/build/AssetSources.js
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8654673Z  | import "expo/internal/bundle-origin"
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8654869Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8655013Z  node_modules/expo-asset/build/Asset.js
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8655311Z  | import "./AssetSources"
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8655461Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8655596Z  node_modules/expo-asset/build/index.js
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8656458Z  | import "./Asset"
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8656697Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8656979Z  node_modules/expo-audio/build/utils/resolveSource.js
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8657507Z  | import "expo-asset"
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8657730Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8657923Z  node_modules/expo-audio/build/ExpoAudio.js
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8658334Z  | import "./utils/resolveSource"
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8658562Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8658727Z  node_modules/expo-audio/build/index.js
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8659053Z  | import "./ExpoAudio"
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8659228Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8659380Z  src/components/VoiceInput.tsx
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8659651Z  | import "expo-audio"
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8659791Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8659899Z  src/app/(tabs)/index.tsx
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8660177Z  | import "../../components/VoiceInput"
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8660786Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8660893Z  src/app (require.context)
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.8661054Z 
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.9385402Z ##[error]Process completed with exit code 1.
+mobile	UNKNOWN STEP	2026-11-09T09:24:23.9642382Z Post job cleanup.
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.0620999Z [command]/usr/bin/git version
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.0677044Z git version 2.56.0
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.0709647Z Temporarily overriding HOME='/home/runner/work/_temp/5dc524fc-ac3f-4af4-a41a-18804787628c' before making global git config changes
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.0713488Z Adding repository directory to the temporary git global config as a safe directory
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.0716417Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/qvac-pocket-tune/qvac-pocket-tune
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.0763342Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.0805944Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.1160818Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.1198667Z http.https://github.com/.extraheader
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.1207245Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.1249691Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.1600267Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.1643315Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.2152669Z Cleaning up orphan processes
+mobile	UNKNOWN STEP	2026-11-09T09:24:24.2515813Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
