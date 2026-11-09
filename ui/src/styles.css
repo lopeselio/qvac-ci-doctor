@@ -105,3 +105,9 @@ footer { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px 22px; color:
 .toast { position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 20px); opacity: 0; background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px; font-size: 14px; transition: .2s; pointer-events: none; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 @media (max-width: 720px) { .repo { width: 100%; } .verdict { flex-wrap: wrap; } }
+.static-note { display: flex; flex-direction: column; gap: 8px; }
+.static-note p { margin: 0; }
+.cmd { margin: 0; background: var(--code); color: var(--code-ink); font-family: var(--mono); font-size: 13px; padding: 10px 14px; border-radius: 10px; overflow-x: auto; }
+.examples { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chip { font: inherit; font-size: 13px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.chip:hover:not(:disabled) { border-color: var(--accent); }

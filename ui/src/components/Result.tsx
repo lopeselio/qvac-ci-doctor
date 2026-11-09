@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { api, type Diagnosis, type Explanation, type State } from '../api'
+import { api, STATIC, type Diagnosis, type Explanation, type State } from '../api'
 
 const TONE: Record<string, { tone: string, icon: string, note: string }> = {
   failure: { tone: 'bad', icon: '✖', note: 'A rerun won\'t help: this needs a fix.' },
@@ -55,10 +55,18 @@ export function Result ({ d, state, toast }: { d: Diagnosis, state: State, toast
 
   async function copyMarkdown () {
     try {
-      const md = await (await fetch(`/api/report/${d.id}.md`)).text()
-      await navigator.clipboard.writeText(md)
+      await navigator.clipboard.writeText(await api.markdown(d.id))
       toast('Copied the Markdown report.')
     } catch { toast('Copy failed.') }
+  }
+
+  async function download () {
+    const url = URL.createObjectURL(new Blob([await api.markdown(d.id)], { type: 'text/markdown' }))
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `ci-doctor-${d.run?.id ?? 'log'}.md`
+    a.click()
+    setTimeout(() => URL.revokeObjectURL(url), 1000)
   }
 
   return (
@@ -127,13 +135,15 @@ export function Result ({ d, state, toast }: { d: Diagnosis, state: State, toast
           )}
           {explanation && !explanation.accepted && <p className='warn-note'>The model&apos;s answer was discarded: {explanation.reason}. The diagnosis above doesn&apos;t depend on it.</p>}
           {explainError && <p className='err'>{explainError}</p>}
-          {!state.qvac && <p className='hint'>Install <code>@qvac/sdk</code> to turn this on.</p>}
+          {!state.qvac && (STATIC
+            ? <p className='hint'>The explanation runs a local model with QVAC, so it needs CI Doctor running on your computer (<code>npm start</code> in a clone, see the README).</p>
+            : <p className='hint'>Install <code>@qvac/sdk</code> to turn this on.</p>)}
         </section>
       )}
 
       <section className='actions'>
         <button type='button' className='btn' onClick={() => { void copyMarkdown() }}>Copy Markdown</button>
-        <a className='btn' href={`/api/report/${d.id}.md`} download>Download .md</a>
+        <button type='button' className='btn' onClick={() => { void download() }}>Download .md</button>
         {d.run && d.verdict !== 'passed' && (
           confirm
             ? (

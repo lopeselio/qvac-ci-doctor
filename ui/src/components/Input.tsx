@@ -1,5 +1,6 @@
 import { useEffect, useState, type ChangeEvent, type DragEvent, type FormEvent } from 'react'
-import { api, type FailedRun, type State } from '../api'
+import { api, STATIC, type FailedRun, type State } from '../api'
+import { EXAMPLES } from '../local'
 
 type Mode = 'run' | 'log'
 
@@ -11,7 +12,7 @@ function ago (iso: string) {
 }
 
 export function Input ({ state, busy, onRun, onLog }: { state: State, busy: boolean, onRun: (ref: string, repo: string, context: boolean) => void, onLog: (text: string, name: string) => void }) {
-  const [mode, setMode] = useState<Mode>('run')
+  const [mode, setMode] = useState<Mode>(STATIC ? 'log' : 'run')
   const [ref, setRef] = useState('')
   const [repo, setRepo] = useState(state.repo ?? '')
   const [context, setContext] = useState(true)
@@ -53,7 +54,15 @@ export function Input ({ state, busy, onRun, onLog }: { state: State, busy: bool
         <button type='button' role='tab' aria-selected={mode === 'log'} onClick={() => setMode('log')}>Paste or drop a log</button>
       </div>
 
-      {mode === 'run' && (
+      {mode === 'run' && STATIC && (
+        <div className='static-note'>
+          <p><b>Reading GitHub runs needs CI Doctor on your computer</b>, signed in with the GitHub CLI: it reads the run, the PR and the changed files with <code>gh</code>, and can post the diagnosis on the PR.</p>
+          <pre className='cmd'>git clone https://github.com/lopeselio/qvac-ci-doctor{'\n'}cd qvac-ci-doctor && npm install && npm run build:ui{'\n'}npm start</pre>
+          <p className='hint'>On this page you can paste or drop any CI log instead. It&apos;s diagnosed right here in your browser.</p>
+        </div>
+      )}
+
+      {mode === 'run' && !STATIC && (
         <>
           <form className='row' onSubmit={submitRun}>
             <input className='grow mono' value={ref} onChange={(e) => setRef(e.target.value)} placeholder='https://github.com/owner/repo/actions/runs/123… or a run ID' aria-label='Run URL or ID' />
@@ -97,7 +106,13 @@ export function Input ({ state, busy, onRun, onLog }: { state: State, busy: bool
 
       {mode === 'log' && (
         <div className={`drop ${drag ? 'over' : ''}`} onDragOver={(e) => { e.preventDefault(); setDrag(true) }} onDragLeave={() => setDrag(false)} onDrop={onDrop}>
-          <textarea value={paste} onChange={(e) => setPaste(e.target.value)} rows={8} placeholder='Paste a CI log here, or drop a .log / .txt file on this box. Nothing leaves this computer.' className='mono' />
+          <textarea value={paste} onChange={(e) => setPaste(e.target.value)} rows={8} placeholder={STATIC ? 'Paste a CI log here, or drop a .log / .txt file on this box. It is diagnosed in your browser; nothing is uploaded.' : 'Paste a CI log here, or drop a .log / .txt file on this box. Nothing leaves this computer.'} className='mono' />
+          {STATIC && (
+            <div className='examples'>
+              <span className='label'>Or try a real CI log:</span>
+              {EXAMPLES.map((x) => <button type='button' key={x.name} className='chip' disabled={busy} onClick={() => { setPaste(x.log); onLog(x.log, x.name) }}>{x.name}</button>)}
+            </div>
+          )}
           <div className='row'>
             <label className='btn upload'>
               <input type='file' accept='.log,.txt,text/plain' onChange={(e: ChangeEvent<HTMLInputElement>) => { const f = e.target.files?.[0]; e.target.value = ''; if (f) void readFile(f) }} />
