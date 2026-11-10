@@ -57,7 +57,7 @@ export function Input ({ state, busy, onRun, onLog }: { state: State, busy: bool
       {mode === 'run' && STATIC && (
         <div className='static-note'>
           <p><b>Reading GitHub runs needs CI Doctor on your computer</b>, signed in with the GitHub CLI: it reads the run, the PR and the changed files with <code>gh</code>, and can post the diagnosis on the PR.</p>
-          <pre className='cmd'>git clone https://github.com/lopeselio/qvac-ci-doctor{'\n'}cd qvac-ci-doctor && npm install && npm run build:ui{'\n'}npm start</pre>
+          <pre className='cmd'>npm install -g qvac-ci-doctor @qvac/sdk{'\n'}ci-doctor ui</pre>
           <p className='hint'>On this page you can paste or drop any CI log instead. It&apos;s diagnosed right here in your browser.</p>
         </div>
       )}
