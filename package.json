@@ -8,7 +8,7 @@
     ".": "./src/index.js"
   },
   "bin": {
-    "ci-doctor": "./bin/ci-doctor.js"
+    "ci-doctor": "bin/ci-doctor.js"
   },
   "files": [
     "bin",
