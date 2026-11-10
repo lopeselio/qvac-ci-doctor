@@ -144,7 +144,7 @@ ci-doctor ui [--port 4500] [-R owner/name] [--no-open]
 - **Explain with the local model:** Qwen3 1.7B on your computer, through Tether QVAC. Its answer streams in, and is shown only if it passes the same checks as the CLI's `--explain`.
 - **Share it:** copy or download the Markdown report, or **post it to the PR**. Posting needs a confirm click; nothing is posted otherwise.
 
-The server listens on 127.0.0.1 only, checks the Host header, serves a strict Content-Security-Policy and only accepts JSON or plain-text POSTs.
+The server listens on 127.0.0.1 only, checks the Host header, serves a strict Content-Security-Policy and only accepts JSON or `application/octet-stream` POSTs (plain text is refused, since any website can send it to a local server).
 
 | Recent failures in a repository | A diagnosis |
 |---|---|
