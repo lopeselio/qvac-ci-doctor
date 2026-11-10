@@ -100,10 +100,11 @@ All 34 now pass, along with the 19 fixtures and the 10 logs used during developm
 ## Use it
 
 ```bash
-git clone https://github.com/lopeselio/qvac-ci-doctor && cd qvac-ci-doctor
-npm install
-npm link        # optional: puts `ci-doctor` on your PATH
+npm install -g qvac-ci-doctor @qvac/sdk   # `ci-doctor` on your PATH; the SDK adds the local-model explanation
+npm install qvac-ci-doctor             # library
 ```
+
+From source: `git clone https://github.com/lopeselio/qvac-ci-doctor && cd qvac-ci-doctor && npm install`, then `npm link` to put `ci-doctor` on your PATH.
 
 Node.js 22+. `run` and `latest` need the [GitHub CLI](https://cli.github.com/) (`gh auth login`); `log` and `eval` don't.
 
@@ -131,7 +132,8 @@ ci-doctor ui [--port 4500]           the web UI (see below)
 ## Web UI
 
 ```bash
-npm run build:ui && npm start      # or: ci-doctor ui [--port 4500] [-R owner/name] [--no-open]
+ci-doctor ui [--port 4500] [-R owner/name] [--no-open]
+# from source: npm run build:ui && npm start
 ```
 
 `ci-doctor ui` opens a local page over the same engine as the CLI:
