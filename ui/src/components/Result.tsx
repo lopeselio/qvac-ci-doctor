@@ -144,7 +144,7 @@ export function Result ({ d, state, toast }: { d: Diagnosis, state: State, toast
           {explanation && !explanation.accepted && <p className='warn-note'>The model&apos;s answer was discarded: {explanation.reason}. The diagnosis above doesn&apos;t depend on it.</p>}
           {explainError && <p className='err'>{explainError}</p>}
           {!state.qvac && (STATIC
-            ? <p className='hint'>The explanation runs a local model with QVAC, so it needs CI Doctor running on your computer (<code>npm start</code> in a clone, see the README).</p>
+            ? <p className='hint'>The explanation runs a local model with QVAC, so it needs CI Doctor running on your computer: <code>npm install -g qvac-ci-doctor @qvac/sdk</code>, then <code>ci-doctor ui</code>.</p>
             : <p className='hint'>Install <code>@qvac/sdk</code> to turn this on.</p>)}
         </section>
       )}
